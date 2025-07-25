@@ -1,0 +1,329 @@
+<mvc:View
+    controllerName="zplusap.sapui5.controller.ODataExamples"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        title="Ejemplos OData V2, V4 y REST"
+        showNavButton="true"
+        navButtonPress="onNavBack"
+    >
+        <content>
+            <VBox class="sapUiMediumMargin">
+                <!-- OData V2 Section -->
+                <Panel class="sapUiResponsiveMargin" width="auto" expandable="true" expanded="true">
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="OData V2 - BusinessPartner (SAP Gateway)" level="H3"/>
+                            <ToolbarSpacer />
+                            <Button 
+                                text="Cargar Datos"
+                                icon="sap-icon://refresh"
+                                press="onLoadODataV2Data"
+                            />
+                        </Toolbar>
+                    </headerToolbar>
+                    <content>
+                        <VBox>
+                            <Text text="Servicio: https://sapes5.sapdevcenter.com/sap/opu/odata/iwbep/GWSAMPLE_BASIC/" class="sapUiTinyMargin"/>
+                            <Text text="Entidad: BusinessPartnerSet" class="sapUiTinyMargin"/>
+                            
+                            <Table
+                                id="businessPartnerTable"
+                                inset="false"
+                                items="{oDataModelV2>/BusinessPartnerSet}"
+                                class="sapUiMediumMarginTop"
+                            >
+                                <headerToolbar>
+                                    <OverflowToolbar>
+                                        <content>
+                                            <Title text="Business Partners" level="H4"/>
+                                            <ToolbarSpacer />
+                                            <Button 
+                                                text="Crear BP"
+                                                icon="sap-icon://add"
+                                                press="onCreateBusinessPartner"
+                                                type="Emphasized"
+                                            />
+                                        </content>
+                                    </OverflowToolbar>
+                                </headerToolbar>
+                                <columns>
+                                    <Column>
+                                        <Text text="ID" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Nombre" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Empresa" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Ciudad" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Acciones" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{oDataModelV2>BusinessPartnerID}" />
+                                            <Text text="{oDataModelV2>FirstName} {oDataModelV2>LastName}" />
+                                            <Text text="{oDataModelV2>CompanyName}" />
+                                            <Text text="{oDataModelV2>City}" />
+                                            <HBox>
+                                                <Button 
+                                                    text="Editar"
+                                                    icon="sap-icon://edit"
+                                                    press="onEditBusinessPartner"
+                                                />
+                                                <Button 
+                                                    text="Eliminar"
+                                                    icon="sap-icon://delete"
+                                                    press="onDeleteBusinessPartner"
+                                                    type="Critical"
+                                                />
+                                            </HBox>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </VBox>
+                    </content>
+                </Panel>
+
+                <!-- OData V4 Section -->
+                <Panel class="sapUiResponsiveMargin" width="auto" expandable="true" expanded="true">
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="OData V4 - SalesOrder (SAP S/4HANA)" level="H3"/>
+                            <ToolbarSpacer />
+                            <Button 
+                                text="Cargar Datos"
+                                icon="sap-icon://refresh"
+                                press="onLoadODataV4Data"
+                            />
+                        </Toolbar>
+                    </headerToolbar>
+                    <content>
+                        <VBox>
+                            <Text text="Servicio: https://sapes5.sapdevcenter.com/sap/opu/odata4/sap/ze2e001/default/sap/ze2e001_salesorder/0001/" class="sapUiTinyMargin"/>
+                            <Text text="Entidad: SalesOrder" class="sapUiTinyMargin"/>
+                            
+                            <Table
+                                id="salesOrderTable"
+                                inset="false"
+                                items="{oDataModelV4>/SalesOrder}"
+                                class="sapUiMediumMarginTop"
+                            >
+                                <headerToolbar>
+                                    <OverflowToolbar>
+                                        <content>
+                                            <Title text="Sales Orders" level="H4"/>
+                                            <ToolbarSpacer />
+                                            <Button 
+                                                text="Crear Orden"
+                                                icon="sap-icon://add"
+                                                press="onCreateSalesOrder"
+                                                type="Emphasized"
+                                            />
+                                        </content>
+                                    </OverflowToolbar>
+                                </headerToolbar>
+                                <columns>
+                                    <Column>
+                                        <Text text="ID" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Cliente" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Fecha" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Total" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Acciones" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{oDataModelV4>SalesOrderID}" />
+                                            <Text text="{oDataModelV4>Customer}" />
+                                            <Text text="{oDataModelV4>CreatedAt}" />
+                                            <Text text="{oDataModelV4>TotalAmount}" />
+                                            <HBox>
+                                                <Button 
+                                                    text="Editar"
+                                                    icon="sap-icon://edit"
+                                                    press="onEditSalesOrder"
+                                                />
+                                                <Button 
+                                                    text="Eliminar"
+                                                    icon="sap-icon://delete"
+                                                    press="onDeleteSalesOrder"
+                                                    type="Critical"
+                                                />
+                                            </HBox>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </VBox>
+                    </content>
+                </Panel>
+
+                <!-- REST API Section -->
+                <Panel class="sapUiResponsiveMargin" width="auto" expandable="true" expanded="true">
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="REST API - Pokemon (JSON Model)" level="H3"/>
+                            <ToolbarSpacer />
+                            <Button 
+                                text="Cargar Pokemon"
+                                icon="sap-icon://refresh"
+                                press="onLoadPokemonData"
+                            />
+                        </Toolbar>
+                    </headerToolbar>
+                    <content>
+                        <VBox>
+                            <Text text="API: https://pokeapi.co/api/v2/pokemon/" class="sapUiTinyMargin"/>
+                            <Text text="Método: GET - JSONModel para servicios REST externos" class="sapUiTinyMargin"/>
+                            
+                            <HBox class="sapUiMediumMarginTop">
+                                <Input 
+                                    id="pokemonSearchInput"
+                                    placeholder="Nombre o ID del Pokemon (ej: pikachu, 25)"
+                                    value="{localModel>/pokemonSearch}"
+                                    width="300px"
+                                />
+                                <Button 
+                                    text="Buscar Pokemon"
+                                    icon="sap-icon://search"
+                                    press="onSearchPokemon"
+                                    type="Emphasized"
+                                />
+                            </HBox>
+                            
+                            <Panel class="sapUiMediumMarginTop" visible="{localModel>/pokemonData/name}">
+                                <headerToolbar>
+                                    <Toolbar>
+                                        <Title text="Información del Pokemon" level="H4"/>
+                                    </Toolbar>
+                                </headerToolbar>
+                                <content>
+                                    <HBox>
+                                        <VBox class="sapUiMediumMargin">
+                                            <f:SimpleForm
+                                                editable="false"
+                                                layout="ResponsiveGridLayout"
+                                                labelSpanXL="4"
+                                                labelSpanL="4"
+                                                labelSpanM="4"
+                                            >
+                                                <f:content>
+                                                    <Label text="ID:" />
+                                                    <Text text="{localModel>/pokemonData/id}" />
+                                                    <Label text="Nombre:" />
+                                                    <Text text="{localModel>/pokemonData/name}" />
+                                                    <Label text="Altura:" />
+                                                    <Text text="{localModel>/pokemonData/height} decímetros" />
+                                                    <Label text="Peso:" />
+                                                    <Text text="{localModel>/pokemonData/weight} hectogramos" />
+                                                    <Label text="Experiencia Base:" />
+                                                    <Text text="{localModel>/pokemonData/base_experience}" />
+                                                </f:content>
+                                            </f:SimpleForm>
+                                        </VBox>
+                                        <Image 
+                                            src="{localModel>/pokemonData/sprites/front_default}"
+                                            width="150px"
+                                            height="150px"
+                                        />
+                                    </HBox>
+                                    
+                                    <Text text="Habilidades:" class="sapUiMediumMarginTop"/>
+                                    <List items="{localModel>/pokemonData/abilities}">
+                                        <StandardListItem title="{localModel>ability/name}" />
+                                    </List>
+                                </content>
+                            </Panel>
+                        </VBox>
+                    </content>
+                </Panel>
+
+                <!-- Comparison Section -->
+                <Panel class="sapUiResponsiveMargin" width="auto" expandable="true">
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="Comparación de Modelos" level="H3"/>
+                        </Toolbar>
+                    </headerToolbar>
+                    <content>
+                        <VBox class="sapUiMediumMargin">
+                            <Text text="Diferencias principales entre los tipos de modelos:" class="sapUiMediumMarginBottom"/>
+                            
+                            <Table>
+                                <columns>
+                                    <Column>
+                                        <Text text="Característica" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="JSON Model" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="OData V2" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="OData V4" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="Tipo de datos" />
+                                            <Text text="JSON / REST APIs" />
+                                            <Text text="OData Versión 2.0" />
+                                            <Text text="OData Versión 4.0" />
+                                        </cells>
+                                    </ColumnListItem>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="Binding" />
+                                            <Text text="Client-side" />
+                                            <Text text="Server-side" />
+                                            <Text text="Server-side" />
+                                        </cells>
+                                    </ColumnListItem>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="Filtros" />
+                                            <Text text="Cliente (JS)" />
+                                            <Text text="Servidor ($filter)" />
+                                            <Text text="Servidor ($filter)" />
+                                        </cells>
+                                    </ColumnListItem>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="CRUD" />
+                                            <Text text="Manual via AJAX" />
+                                            <Text text="Automático" />
+                                            <Text text="Automático mejorado" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </VBox>
+                    </content>
+                </Panel>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>
