@@ -10,6 +10,29 @@
         title="{i18n>title}"
     >
         <VBox>
+            <Panel class="sapUiResponsiveMargin" width="auto">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="Ejemplos de Modelos de Datos" level="H2"/>
+                        <ToolbarSpacer />
+                        <Button 
+                            text="Ver Ejemplos OData y REST"
+                            icon="sap-icon://database"
+                            type="Emphasized"
+                            press="onPressNavigateToODataExamples"
+                        />
+                    </Toolbar>
+                </headerToolbar>
+                <content>
+                    <Text text="Esta aplicación demuestra el uso de diferentes tipos de modelos en SAPUI5:" class="sapUiMediumMargin"/>
+                    <VBox class="sapUiMediumMargin">
+                        <Text text="• JSON Model: Gestión local de usuarios (actual)" />
+                        <Text text="• OData V2 Model: BusinessPartner desde SAP Gateway" />
+                        <Text text="• OData V4 Model: SalesOrder desde SAP S/4HANA" />
+                        <Text text="• REST Model: Pokemon API externa" />
+                    </VBox>
+                </content>
+            </Panel>
             <f:SimpleForm
                 id="SimpleFormDisplayCreateUser"
                 editable="false"

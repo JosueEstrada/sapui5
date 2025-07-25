@@ -55,6 +55,10 @@ sap.ui.define([
             this.getOwnerComponent().getRouter().navTo("RouteDetail", {UserID: oItem.getTitle()});
         },
 
+        onPressNavigateToODataExamples() {
+            this.getOwnerComponent().getRouter().navTo("RouteODataExamples");
+        },
+
         /* =======================================================
          * CREACIÓN DE NUEVO USUARIO
          * ======================================================= */
