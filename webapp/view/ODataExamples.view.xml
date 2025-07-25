@@ -251,7 +251,26 @@
                                     
                                     <Text text="Habilidades:" class="sapUiMediumMarginTop"/>
                                     <List items="{localModel>/pokemonData/abilities}">
-                                        <StandardListItem title="{localModel>ability/name}" />
+                                        <StandardListItem 
+                                            title="{localModel>ability/name}" 
+                                            description="Habilidad Pokemon"
+                                        />
+                                    </List>
+                                    
+                                    <Text text="Tipos:" class="sapUiMediumMarginTop"/>
+                                    <List items="{localModel>/pokemonData/types}">
+                                        <StandardListItem 
+                                            title="{localModel>type/name}" 
+                                            description="Tipo #{localModel>slot}"
+                                        />
+                                    </List>
+                                    
+                                    <Text text="Estadísticas Base:" class="sapUiMediumMarginTop"/>
+                                    <List items="{localModel>/pokemonData/stats}">
+                                        <StandardListItem 
+                                            title="{localModel>stat/name}: {localModel>base_stat}" 
+                                            description="Esfuerzo: {localModel>effort}"
+                                        />
                                     </List>
                                 </content>
                             </Panel>
